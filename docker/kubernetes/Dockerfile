@@ -213,20 +213,20 @@ RUN apt -y install mariadb-server
 # FLUSH PRIVILEGES;
 
 RUN echo "Replace VIPER.ENV"
-RUN git clone --depth 1 https://github.com/smaurice101/raspberrypi.git
+RUN git clone --depth 1 https://github.com/126530211-myseneca/tmlcsn.git
 
-RUN chmod -R +x raspberrypi
+RUN chmod -R +x tmlcsn
 
-RUN cp -rf raspberrypi/viper-env-file/viper.env Viper-produce/viper.env
-RUN cp -rf raspberrypi/viper-env-file/viper.env Viper-preprocess/viper.env
-RUN cp -rf raspberrypi/viper-env-file/viper.env Viper-preprocess2/viper.env
+RUN cp -rf tmlcsn/viper-env-file/viper.env Viper-produce/viper.env
+RUN cp -rf tmlcsn/viper-env-file/viper.env Viper-preprocess/viper.env
+RUN cp -rf tmlcsn/viper-env-file/viper.env Viper-preprocess2/viper.env
 
-RUN cp -rf raspberrypi/viper-env-file/viper.env Viperviz/viper.env
+RUN cp -rf tmlcsn/viper-env-file/viper.env Viperviz/viper.env
 
 RUN echo "Copy the IotSolution Scripts"
 
 RUN mkdir IotSolution
-RUN cp -rf raspberrypi/iotsolution-scripts-data/* IotSolution/
+RUN cp -rf tmlcsn/iotsolution-scripts-data/* IotSolution/
 
 ################# IOT DATA
 WORKDIR IotSolution
@@ -241,9 +241,9 @@ RUN rm -rf IoTData.zip
 
 WORKDIR /
 
-RUN cp -rf raspberrypi/tmux-shell-script/tmux-kubernetes.sh tmux/tmux-kubernetes.sh
+RUN cp -rf tmlcsn/tmux-shell-script/tmux-kubernetes.sh tmux/tmux-kubernetes.sh
 
-RUN cp -rf raspberrypi/iot-dashboard-html/viperviz.zip Viperviz/viperviz.zip
+RUN cp -rf tmlcsn/iot-dashboard-html/viperviz.zip Viperviz/viperviz.zip
 RUN chmod -R +x IotSolution
 RUN chmod -R +x Viperviz
 RUN chmod -R +x tmux
@@ -253,7 +253,7 @@ RUN unzip viperviz.zip
 
 WORKDIR /
 
-RUN rm -rf raspberrypi
+RUN rm -rf tmlcsn
 
 RUN echo "Installing Java"
 RUN apt -y install default-jdk || true
